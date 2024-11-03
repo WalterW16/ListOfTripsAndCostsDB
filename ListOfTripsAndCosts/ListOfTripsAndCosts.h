@@ -31,4 +31,5 @@ private slots:
     void onApplyFilterButtonClicked();
     void onShowAllTrips();
     void onShowAllCosts();
+    void onClearSortButtonClicked();
 };

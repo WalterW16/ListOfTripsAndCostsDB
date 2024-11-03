@@ -491,6 +491,19 @@
     <string>Show all records</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="CancelSortBtn">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>210</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel sorting</string>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

@@ -33,11 +33,12 @@ ListOfTripsAndCosts::ListOfTripsAndCosts(QWidget *parent)
     connect(ui.ApplyPushButton, &QPushButton::clicked, this, &ListOfTripsAndCosts::onApplyFilterButtonClicked);
     connect(ui.showAllCosts, &QPushButton::clicked, this, &ListOfTripsAndCosts::onShowAllCosts);
     connect(ui.showAllTrips, &QPushButton::clicked, this, &ListOfTripsAndCosts::onShowAllTrips);
-
+    connect(ui.CancelSortBtn, &QPushButton::clicked, this, &ListOfTripsAndCosts::onClearSortButtonClicked);
     ui.minlabel->hide();
     ui.maxlabel->hide();
     ui.MinSum->hide();
     ui.maxSum->hide();
+    ui.CancelSortBtn->hide();
     ui.ApplyPushButton->hide();
 }
 
@@ -274,6 +275,7 @@ void ListOfTripsAndCosts::ComboBoxSortChanged()
         tableOfTrips.SortByDepartureDate();
         QMessageBox::information(this, "Success", "Sorted successfully!");
     }
+    ui.CancelSortBtn->show();
 }
 
 void ListOfTripsAndCosts::onApplyFilterButtonClicked()
@@ -316,4 +318,10 @@ void ListOfTripsAndCosts::onShowAllTrips()
 void ListOfTripsAndCosts::onShowAllCosts()
 {
     tableOfCosts.ShowAll();
+}
+
+void ListOfTripsAndCosts::onClearSortButtonClicked()
+{
+    tableOfTrips.CancelSorting();
+    ui.CancelSortBtn->hide();
 }

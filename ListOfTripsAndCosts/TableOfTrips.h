@@ -21,5 +21,6 @@ public:
 	bool UpdateView(Trip& trip);
 	bool RecordExists(int id);
 	void ShowAll();
+	void CancelSorting();
 };
 

@@ -119,4 +119,10 @@ void TableOfTrips::ShowAll()
     model->select();
 }
 
+void TableOfTrips::CancelSorting()
+{
+    model->setSort(-1, Qt::AscendingOrder); 
+    model->select();
+}
+
 

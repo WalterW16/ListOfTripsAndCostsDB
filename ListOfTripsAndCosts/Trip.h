@@ -5,15 +5,15 @@ class Trip
 	int ID;
 	QString Country;
 	QString City;
-	QString DepartureDate;
-	QString ReturnDate;
+	QDate DepartureDate;
+	QDate ReturnDate;
 public:
 	Trip();
-	Trip(int newID, QString newCountry, QString newCity, QString newDepartureDate, QString newReturnDate);
+	Trip(int newID, QString newCountry, QString newCity, QDate newDepartureDate, QDate newReturnDate);
 	int GetID();
 	QString GetCountry();
 	QString GetCity();
-	QString GetDepartureDate();
-	QString GetReturnDate();	
+	QDate GetDepartureDate();
+	QDate GetReturnDate();
 };
 

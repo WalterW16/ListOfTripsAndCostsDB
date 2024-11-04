@@ -20,8 +20,8 @@ ListOfTripsAndCosts::ListOfTripsAndCosts(QWidget *parent)
     ui.CostsTableView->show();
     ui.CostsTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui.TripTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
-
+    ui.EditDepartureDate->date() = QDate::currentDate();
+    ui.EditReturnDate->date() = QDate::currentDate();
     connect(ui.AddTripPushButton, &QPushButton::clicked, this, &ListOfTripsAndCosts::onAddTripButtonClicked);
     connect(ui.UpgrateTripsPushButton, &QPushButton::clicked, this, &ListOfTripsAndCosts::onUpdateTripButtonClicked);
     connect(ui.DeleteTripPushButton, &QPushButton::clicked, this, &ListOfTripsAndCosts::onDeleteTripButtonClicked);
@@ -120,7 +120,7 @@ void ListOfTripsAndCosts::onAddTripButtonClicked()
         return;
     }
    
-    Trip newTrip(ui.EditITripID->value(), ui.EditCountry->text(), ui.EditCity->text(), ui.EditDepartureDate->text(), ui.EditReturnDate->text());
+    Trip newTrip(ui.EditITripID->value(), ui.EditCountry->text(), ui.EditCity->text(), ui.EditDepartureDate->date(), ui.EditReturnDate->date());
     if (tableOfTrips.AddTrip(newTrip)) {
         QMessageBox::information(this, "Success", "Trip added successfully!");
         TripsModel->select();
@@ -131,8 +131,8 @@ void ListOfTripsAndCosts::onAddTripButtonClicked()
     ui.EditITripID->clear();
     ui.EditCountry->clear();
     ui.EditCity->clear();
-    ui.EditDepartureDate->clear();
-    ui.EditReturnDate->clear();
+    ui.EditDepartureDate->date() = QDate::currentDate();
+    ui.EditReturnDate->date() = QDate::currentDate();  
     
 }
 
@@ -143,8 +143,8 @@ void ListOfTripsAndCosts::onAddCostButtonClicked()
         QMessageBox::warning(this, "Error", "Please enter a valid Cost ID.");
         return;
     }
-    if (tableOfTrips.RecordExists(ui.EditITripID->value())) {
-        QMessageBox::warning(this, "Error", "A trip with this ID already exists.");
+    if (tableOfCosts.RecordExists(ui.EditCostID->value())) {
+        QMessageBox::warning(this, "Error", "A cost with this ID already exists.");
         return;
     }
 
@@ -201,8 +201,9 @@ void ListOfTripsAndCosts::onDeleteTripButtonClicked()
     ui.EditITripID->clear();
     ui.EditCountry->clear();
     ui.EditCity->clear();
-    ui.EditDepartureDate->clear();
-    ui.EditReturnDate->clear();
+    ui.EditDepartureDate->date() = QDate::currentDate();
+    ui.EditReturnDate->date() = QDate::currentDate();
+    
 
 }
 
@@ -219,7 +220,7 @@ void ListOfTripsAndCosts::onUpdateTripButtonClicked()
         return;
     }
 
-    Trip updTrip(id, ui.EditCountry->text(), ui.EditCity->text(), ui.EditDepartureDate->text(), ui.EditReturnDate->text());
+    Trip updTrip(id, ui.EditCountry->text(), ui.EditCity->text(), ui.EditDepartureDate->date(), ui.EditReturnDate->date());
     if (tableOfTrips.UpdateView(updTrip)) {
         QMessageBox::information(this, "Success", "Trip updated successfully!");
         TripsModel->select();
@@ -230,8 +231,9 @@ void ListOfTripsAndCosts::onUpdateTripButtonClicked()
     ui.EditITripID->clear();
     ui.EditCountry->clear();
     ui.EditCity->clear();
-    ui.EditDepartureDate->clear();
-    ui.EditReturnDate->clear();
+    ui.EditDepartureDate->date() = QDate::currentDate();
+    ui.EditReturnDate->date() = QDate::currentDate();
+ 
 
 }
 

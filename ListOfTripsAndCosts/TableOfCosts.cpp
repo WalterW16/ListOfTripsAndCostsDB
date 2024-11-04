@@ -15,8 +15,7 @@ void TableOfCosts::createTable()
                "ID INTEGER PRIMARY KEY, "
                "ID_Of_Trip INTEGER, "
                "Sum REAL, "
-               "Description TEXT, "
-        "FOREIGN KEY (ID_Of_Trip) REFERENCES Trips(ID))");
+               "Description TEXT )");
  
 }
 
@@ -72,7 +71,7 @@ bool TableOfCosts::RemoveCost(int Id)
 
 void TableOfCosts::FilterBySum(double minSum, double maxSum)
 {
-    if (model) { // Перевірка наявності моделі
+    if (model) { 
         model->setFilter(QString("Sum BETWEEN %1 AND %2").arg(minSum).arg(maxSum));
         if (!model->select()) {
             QMessageBox::warning(nullptr, "Error", "Failed to apply filter: " + model->lastError().text());
@@ -86,7 +85,7 @@ void TableOfCosts::FilterBySum(double minSum, double maxSum)
 
 void TableOfCosts::FilterByDescription(const QString& filter)
 {
-    if (model) { // Перевірка наявності моделі
+    if (model) { 
         model->setFilter(QString("Description LIKE '%%1%'").arg(filter));
         if (!model->select()) {
             QMessageBox::warning(nullptr, "Error", "Failed to apply filter: " + model->lastError().text());

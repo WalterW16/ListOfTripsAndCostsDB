@@ -3,11 +3,11 @@
 
 
 Trip::Trip()
-	:ID(0), Country(""), City(""), DepartureDate(""), ReturnDate("")
+	:ID(0), Country(""), City(""), DepartureDate(QDate::currentDate()), ReturnDate(QDate::currentDate())
 {
 }
 
-Trip::Trip(int newID, QString newCountry, QString newCity, QString newDepartureDate, QString newReturnDate)
+Trip::Trip(int newID, QString newCountry, QString newCity, QDate newDepartureDate, QDate newReturnDate)
 	:ID(newID), Country(newCountry), City(newCity), DepartureDate(newDepartureDate), ReturnDate(newReturnDate)
 {
 }
@@ -27,12 +27,12 @@ QString Trip::GetCity()
 	return City;
 }
 
-QString Trip::GetDepartureDate()
+QDate  Trip::GetDepartureDate()
 {
 	return DepartureDate;
 }
 
-QString Trip::GetReturnDate()
+QDate  Trip::GetReturnDate()
 {
 	return ReturnDate;
 }

@@ -12,7 +12,7 @@ void TableOfTrips::createTable()
 {
     QSqlQuery query;
     query.exec("CREATE TABLE IF NOT EXISTS Trips (ID INTEGER PRIMARY KEY, "
-        "Country TEXT, City TEXT, Departure_Date TEXT, Return_Date TEXT)");
+        "Country TEXT, City TEXT, Departure_Date DATE, Return_Date DATE)");
     
 }
 
